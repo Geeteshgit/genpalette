@@ -1,7 +1,7 @@
-import { paletteColors } from "@/app/data/homepagePaletteSet";
 import React from "react";
-import ColorPalette from "./ColorPalette";
 import Link from "next/link";
+import ColorPalette from "./ColorPalette";
+import { paletteColors } from "@/data/paletteSet";
 
 const PaletteContainer = () => {
   return (

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { paletteColors } from "../../data/homepagePaletteSet";
+import { paletteColors } from "../../data/paletteSet";
 import Link from "next/link";
 
 const HomepagePalette = () => {

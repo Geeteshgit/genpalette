@@ -1,5 +1,5 @@
 "use client";
-import { explorePaletteColors } from "@/app/data/homepagePaletteSet";
+import { explorePaletteColors } from "@/data/paletteSet";
 import Link from "next/link";
 import React from "react";
 

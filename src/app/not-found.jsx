@@ -10,7 +10,7 @@ const NotFound = () => {
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="flex flex-col justify-center items-center text-center px-4 bg-[#FAFAFA] min-h-screen"
+      className="flex flex-col flex-1 justify-center items-center text-center px-4 bg-[#FAFAFA]"
     >
       <div className="flex flex-col items-center gap-6">
         <motion.div

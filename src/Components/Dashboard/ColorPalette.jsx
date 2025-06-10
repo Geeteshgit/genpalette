@@ -1,7 +1,7 @@
-import { getBestContrastColor } from "@/app/lib/getTextColor";
 import React from "react";
 import Color from "./Color";
 import { FaEye } from "react-icons/fa6";
+import { getBestContrastColor } from "@/lib/getTextColor";
 
 const ColorPalette = ({ palette }) => {
   return (

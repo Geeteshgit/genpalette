@@ -1,12 +1,12 @@
 import React from "react";
-import { auth } from "../lib/auth";
+import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import Information from "../Components/Dashboard/Information";
-import LogoutButton from "../Components/LogoutButton";
+import Information from "@/Components/Dashboard/Information";
+import LogoutButton from "@/Components/LogoutButton";
 import dynamic from "next/dynamic";
-import Loader from "../Components/Loader";
+import Loader from "@/Components/Loader";
   const PaletteContainer = dynamic(
-    () => import("../Components/Dashboard/PaletteContainer"),
+    () => import("@/Components/Dashboard/PaletteContainer"),
     { loading: () => <Loader /> }
   );
 
@@ -22,7 +22,7 @@ const Dashboard = async () => {
   // const user = session?.user;
   const user = { name: "Geetesh", email: "geetesh472@gmail.com" };
   return (
-    <main className="min-h-screen flex flex-col gap-10 sm:gap-15 px-4 sm:px-12 lg:px-36 mt-5">
+    <main className="flex flex-col flex-1 gap-10 sm:gap-15 px-4 sm:px-12 lg:px-36 mt-5">
       <div className="flex justify-between items-center">
         <Information name={user.name} email={user.email} />
         <LogoutButton />

@@ -1,10 +1,10 @@
+import CallToAction from "@/Components/Homepage/CallToAction";
+import ComputerPalette from "@/Components/Homepage/ComputerPalette";
+import Features from "@/Components/Homepage/Features";
+import HomepageHeading from "@/Components/Homepage/HomepageHeading";
+import HomepagePalette from "@/Components/Homepage/HomepagePalette";
+import HowToUse from "@/Components/Homepage/HowToUse";
 import React from "react";
-import HomepagePalette from "./Components/Homepage/HomepagePalette";
-import HomepageHeading from "./Components/Homepage/HomepageHeading";
-import CallToAction from "./Components/Homepage/CallToAction";
-import Features from "./Components/Homepage/Features";
-import HowToUse from "./Components/Homepage/HowToUse";
-import ComputerPalette from "./Components/Homepage/ComputerPalette";
 
 const Home = () => {
   return (

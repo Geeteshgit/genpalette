@@ -1,14 +1,14 @@
-"use client"
-import { githubLogin, googleLogin } from '@/app/lib/actions/authActions'
-import React from 'react'
+import SignInBackground from "@/Components/SignInBackground";
+import SignInForm from "@/Components/SignInForm";
+import React from "react";
 
 const SignIn = () => {
   return (
-    <div>
-        <button onClick={() => githubLogin()}>Github Login</button>
-        <button onClick={() => googleLogin()}>Google Login</button>
-    </div>
-  )
-}
+    <main className="relative flex-1 flex flex-col">
+      <SignInBackground />
+      <SignInForm  />
+    </main>
+  );
+};
 
-export default SignIn
+export default SignIn;

@@ -1,6 +1,7 @@
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
+
+import Header from "@/Components/Header";
 import "./globals.css";
+import Footer from "@/Components/Footer";
 
 export const metadata = {
   title: "GenPalette - Your AI color palette generator!",

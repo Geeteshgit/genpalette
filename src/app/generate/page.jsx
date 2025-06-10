@@ -1,6 +1,7 @@
 import React from 'react'
-import { auth } from '../lib/auth'
 import { redirect } from 'next/navigation';
+import { auth } from '@/lib/auth';
+
 
 export const metadata = {
   title: "Generate AI Color Palettes - GenPalette",
@@ -13,7 +14,7 @@ const Generate = async () => {
   // if(!session) redirect('/sign-in');
 
   return (
-    <div>Generate</div>
+    <main className='flex-1'>Generate</main>
   )
 }
 

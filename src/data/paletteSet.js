@@ -117,3 +117,13 @@ export const explorePaletteColors = [
   ["#ffcad4", "#f4acb7", "#9d8189", "#f7ede2", "#e0e1dd"],
   ["#cdb4db", "#ffc8dd", "#ffafcc", "#bde0fe", "#a2d2ff"],
 ];
+
+export const signInBackgroundColors = [
+  ["#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bf6ff"],
+  ["#a0c4ff", "#bdb2ff", "#ffc6ff", "#fffffc", "#d0f4de"],
+  ["#ccd5ae", "#e9edc9", "#fefae0", "#faedcd", "#d4a373"],
+  ["#eae4e9", "#fff1e6", "#fde2e4", "#fad2e1", "#e2ece9"],
+  ["#f1c0e8", "#cfbaf0", "#a3c4f3", "#90dbf4", "#8eecf5"],
+  ["#ecf39e", "#90f1ef", "#ff70a6", "#ff9770", "#ffd670"],
+  ["#eae4e9", "#fff1e6", "#fde2e4", "#fad2e1", "#e2ece9"],
+];
