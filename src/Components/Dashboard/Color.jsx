@@ -7,7 +7,7 @@ const Color = ({ color, textColor }) => {
   const copyColor = async () => {
     try {
       navigator.clipboard.writeText(color.toUpperCase());
-      setText("Copied!");
+      setText("#Copied!");
       setTimeout(() => {
         setText(color);
       }, 2000);
@@ -24,9 +24,9 @@ const Color = ({ color, textColor }) => {
     >
       <span
         style={{ color: textColor }}
-        className="text-xs sm:text-base lg:text-xl sm:font-semibold lg:opacity-0 group-hover:opacity-100 transition duration-300"
+        className="font-roboto text-xs sm:text-base lg:text-xl sm:font-semibold lg:opacity-0 group-hover:opacity-100 transition duration-300"
       >
-        {text.toUpperCase()}
+        {text.slice(1).toUpperCase()}
       </span>
     </div>
   );

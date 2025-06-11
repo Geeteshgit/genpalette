@@ -17,10 +17,9 @@ export const metadata = {
 };
 
 const Dashboard = async () => {
-  // const session = await auth();
-  // if (!session) redirect("/sign-in");
-  // const user = session?.user;
-  const user = { name: "Geetesh", email: "geetesh472@gmail.com" };
+  const session = await auth();
+  if (!session) redirect("/sign-in");
+  const user = session?.user;
   return (
     <main className="flex flex-col flex-1 gap-10 sm:gap-15 px-4 sm:px-12 lg:px-36 mt-5">
       <div className="flex justify-between items-center">

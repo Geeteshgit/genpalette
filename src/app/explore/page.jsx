@@ -5,7 +5,8 @@ export const metadata = {
   description: "Explore hundreds of AI-generated color palettes tailored for designers and developers. Instantly preview and pick the perfect vibe for your project.",
 };
 
-const Explore = () => {
+const Explore = async () => {
+  
   return (
     <div>Explore</div>
   )

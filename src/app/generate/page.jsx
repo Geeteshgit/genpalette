@@ -1,6 +1,7 @@
 import React from 'react'
 import { redirect } from 'next/navigation';
 import { auth } from '@/lib/auth';
+import Link from 'next/link';
 
 
 export const metadata = {
@@ -14,7 +15,10 @@ const Generate = async () => {
   // if(!session) redirect('/sign-in');
 
   return (
-    <main className='flex-1'>Generate</main>
+    <main className='flex-1'>
+      Generate
+      <Link href='/palette'>Palette</Link>
+    </main>
   )
 }
 

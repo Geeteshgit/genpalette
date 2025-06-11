@@ -1,20 +1,47 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import ColorPalette from "./ColorPalette";
-import { paletteColors } from "@/data/paletteSet";
+import axios from "axios";
+import Loader from "../Loader";
 
 const PaletteContainer = () => {
+  const [palettes, setPalettes] = useState(null);
+  useEffect(() => {
+    const getSavedPalettes = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/user/palette`
+        );
+        setPalettes(response.data.palettes);
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+    getSavedPalettes();
+  }, []);
+
+  if (!palettes) return <Loader />;
   return (
     <>
-      {paletteColors.length > 0 ? (
+      {palettes.length > 0 ? (
         <div className="w-full grid lg:grid-cols-2 gap-8 mb-10 sm:mb-15 lg:mb-20">
-          {paletteColors.map((palette, idx) => {
-            return <ColorPalette key={idx} palette={palette} />;
+          {palettes.map((palette) => {
+            return (
+              <ColorPalette
+                key={palette._id}
+                palette={palette}
+                palettes={palettes}
+                setPalettes={setPalettes}
+              />
+            );
           })}
         </div>
       ) : (
         <div className="flex flex-col items-center text-center">
-          <h2 className="text-2xl sm:text-3xl opacity-50">No Saved Palettes Yet!</h2>
+          <h2 className="text-2xl sm:text-3xl opacity-50">
+            No Saved Palettes Yet!
+          </h2>
           <div className="flex flex-col gap-2 mt-10">
             <Link
               href="/generate"
