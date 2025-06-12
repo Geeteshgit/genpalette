@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
-import Color from "./Color";
 import { FaEye } from "react-icons/fa6";
 import { getBestContrastColor } from "@/lib/getTextColor";
 import { useDispatch } from "react-redux";
 import { redirect } from "next/navigation";
 import { setPalette } from "@/redux/features/paletteSlice";
 import axios from "axios";
+import SinglePaletteColor from "./SinglePaletteColor";
 
-const ColorPalette = ({ palette, palettes, setPalettes }) => {
+const SavedColorPalette = ({ palette, palettes, setPalettes }) => {
   const dispatch = useDispatch();
   const openPalette = () => {
     dispatch(setPalette(palette.colors));
@@ -29,7 +29,7 @@ const ColorPalette = ({ palette, palettes, setPalettes }) => {
       <div className="w-full flex">
         {palette.colors.map((color, idx) => {
           const textColor = getBestContrastColor(color);
-          return <Color key={idx} color={color} textColor={textColor} />;
+          return <SinglePaletteColor key={idx} color={color} textColor={textColor} />;
         })}
       </div>
       <div className="flex justify-between items-center gap-2 p-2 text-sm sm:text-base text-center border-t flex-wrap">
@@ -55,4 +55,4 @@ const ColorPalette = ({ palette, palettes, setPalettes }) => {
   );
 };
 
-export default ColorPalette;
+export default SavedColorPalette;

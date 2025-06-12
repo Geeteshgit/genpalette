@@ -1,53 +1,56 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import ColorPalette from "./ColorPalette";
 import axios from "axios";
 import Loader from "../Loader";
+import SavedColor from "./SavedColor";
+import { getBestContrastColor } from "@/lib/getTextColor";
 
-const PaletteContainer = () => {
-  const [palettes, setPalettes] = useState(null);
+const SavedColorsContainer = () => {
+  const [colors, setColors] = useState(null);
   useEffect(() => {
-    const getSavedPalettes = async () => {
+    const getSavedColors = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/user/palette`
+          `${process.env.NEXT_PUBLIC_API_URL}/api/user/color`
         );
-        setPalettes(response.data.palettes);
+        setColors(response.data.savedColors);
       } catch (err) {
         console.error(err.message);
       }
     };
-    getSavedPalettes();
+    getSavedColors();
   }, []);
 
-  if (!palettes) return <Loader />;
+  if (!colors) return <Loader />;
   return (
     <>
-      {palettes.length > 0 ? (
-        <div className="w-full grid lg:grid-cols-2 gap-8 mb-10 sm:mb-15 lg:mb-20">
-          {palettes.map((palette) => {
+      {colors.length > 0 ? (
+        <div className="w-full grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 mb-5 sm:mb-10 lg:mb-15">
+          {colors.map((color, idx) => {
+            const textColor = getBestContrastColor(color);
             return (
-              <ColorPalette
-                key={palette._id}
-                palette={palette}
-                palettes={palettes}
-                setPalettes={setPalettes}
+              <SavedColor
+                key={idx}
+                color={color}
+                colors={colors}
+                textColor={textColor}
+                setColors={setColors}
               />
             );
           })}
         </div>
       ) : (
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center mb-5 lg:mb-10">
           <h2 className="text-2xl sm:text-3xl opacity-50">
-            No Saved Palettes Yet!
+            No Saved Colors Yet!
           </h2>
           <div className="flex flex-col gap-2 mt-10">
             <Link
-              href="/generate"
+              href="/palette"
               className="sm:text-lg cursor-pointer px-6 py-2 border border-transparent bg-blue-500 rounded-sm text-white hover:bg-blue-600 hover:scale-102 transition duration-300"
             >
-              Generate A Palette
+              Generate New Colors
             </Link>
             <Link
               href="/explore"
@@ -62,4 +65,4 @@ const PaletteContainer = () => {
   );
 };
 
-export default PaletteContainer;
+export default SavedColorsContainer;

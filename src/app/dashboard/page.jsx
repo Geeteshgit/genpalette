@@ -5,10 +5,16 @@ import Information from "@/Components/Dashboard/Information";
 import LogoutButton from "@/Components/LogoutButton";
 import dynamic from "next/dynamic";
 import Loader from "@/Components/Loader";
-  const PaletteContainer = dynamic(
-    () => import("@/Components/Dashboard/PaletteContainer"),
-    { loading: () => <Loader /> }
-  );
+const SavedPalettesContainer = dynamic(
+  () => import("@/Components/Dashboard/SavedPalettesContainer"),
+  { loading: () => <Loader /> }
+);
+const SavedColorsContainer = dynamic(
+  () => import("@/Components/Dashboard/SavedColorsContainer"),
+  {
+    loading: () => <Loader />,
+  }
+);
 
 export const metadata = {
   title: "Dashboard - GenPalette",
@@ -22,14 +28,18 @@ const Dashboard = async () => {
   const user = session?.user;
   return (
     <main className="flex flex-col flex-1 gap-10 sm:gap-15 px-4 sm:px-12 lg:px-36 mt-5">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start gap-2">
         <Information name={user.name} email={user.email} />
         <LogoutButton />
       </div>
       <h2 className="font-anton text-center text-4xl sm:text-5xl lg:text-6xl font-bold">
-        Saved Palettes
+        SAVED COLORS
       </h2>
-      <PaletteContainer />
+      <SavedColorsContainer />
+      <h2 className="font-anton text-center text-4xl sm:text-5xl lg:text-6xl font-bold">
+        SAVED PALETTES
+      </h2>
+      <SavedPalettesContainer />
     </main>
   );
 };

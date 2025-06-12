@@ -17,11 +17,9 @@ const SaveColorBtn = ({ color, textColor, session }) => {
           { color }
         );
         setIsSaved(true);
-      } else {
-        const response = await axios.delete(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/user/color/${encodeURIComponent(color)}`
-        );
-        setIsSaved(false);
+        setTimeout(() => {
+          setIsSaved(false);
+        }, 2000);
       }
     } catch (err) {
       console.error(err.message);

@@ -7,7 +7,7 @@ const CopyColorBtn = ({ color, textColor }) => {
   const [isCopied, setIsCopied] = useState(false);
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(color);
+      await navigator.clipboard.writeText(color.toUpperCase());
       setIsCopied(true);
       setTimeout(() => {
         setIsCopied(false);

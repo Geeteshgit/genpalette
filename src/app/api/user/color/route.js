@@ -27,7 +27,6 @@ export async function GET() {
   }
 }
 
-
 export async function POST(req) {
   try {
     const session = await auth();
@@ -40,6 +39,11 @@ export async function POST(req) {
     const user = await User.findOne({ email: session.user.email });
     if (!user) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
+    }
+
+    const alreadySaved = user.savedColors.includes(color);
+    if (alreadySaved) {
+      return NextResponse.json({ message: "Color already saved" }, { status: 409 });
     }
 
     user.savedColors.push(color);

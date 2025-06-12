@@ -3,6 +3,7 @@ import React from "react";
 import CopyColorBtn from "./CopyColorBtn";
 import SaveColorBtn from "./SaveColorBtn";
 import ShowShadesBtn from "./ShowShadesBtn";
+import ColorPickerBtn from "./ColorPickerBtn";
 
 const ColorTools = ({
   color,
@@ -15,6 +16,7 @@ const ColorTools = ({
 
   return (
     <div className="flex lg:flex-col items-center gap-4">
+      <ColorPickerBtn color={color} textColor={textColor} idx={idx} />
       <CopyColorBtn color={color} textColor={textColor} />
       <SaveColorBtn color={color} textColor={textColor} session={session} />
       <ShowShadesBtn

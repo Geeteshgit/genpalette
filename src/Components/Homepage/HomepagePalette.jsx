@@ -17,7 +17,7 @@ const HomepagePalette = () => {
 
   return (
     <Link
-      href="/generate"
+      href="/palette"
       className="flex flex-col items-center w-full sm:w-2/5"
     >
       <div className="relative w-4/5 flex border-10 rounded-t-lg sm:h-full min-h-44 lg:min-h-52">

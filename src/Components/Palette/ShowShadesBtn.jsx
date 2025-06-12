@@ -1,8 +1,11 @@
 "use client";
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { LuTable } from "react-icons/lu";
-import ColorShades from "./ColorShades";
-
+import Loader from "../Loader";
+const ColorShades = dynamic(() => import("./ColorShades"), {
+  loading: () => <Loader />,
+});
 const ShowShadesBtn = ({ color, textColor, idx }) => {
   const [showShades, setShowShades] = useState(false);
 
@@ -15,7 +18,15 @@ const ShowShadesBtn = ({ color, textColor, idx }) => {
       >
         <LuTable />
       </button>
-      {showShades ? <ColorShades color={color} setShowShades={setShowShades} idx={idx} /> : null}
+      {showShades && (
+        <>
+          <div
+            onClick={() => setShowShades(false)}
+            className="fixed inset-0 bg-black/30"
+          />
+          <ColorShades color={color} setShowShades={setShowShades} idx={idx} />
+        </>
+      )}
     </>
   );
 };
