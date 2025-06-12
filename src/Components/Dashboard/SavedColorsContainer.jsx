@@ -26,7 +26,7 @@ const SavedColorsContainer = () => {
   return (
     <>
       {colors.length > 0 ? (
-        <div className="w-full grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 mb-5 sm:mb-10 lg:mb-15">
+        <div className="w-full grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-5 sm:mb-10 lg:mb-15">
           {colors.map((color, idx) => {
             const textColor = getBestContrastColor(color);
             return (

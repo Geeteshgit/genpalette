@@ -25,7 +25,7 @@ const SavedPalettesContainer = () => {
   return (
     <>
       {palettes.length > 0 ? (
-        <div className="w-full grid lg:grid-cols-2 gap-8 mb-10 sm:mb-15 lg:mb-20">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-10 sm:mb-15 lg:mb-20">
           {palettes.map((palette) => {
             return (
               <SavedColorPalette

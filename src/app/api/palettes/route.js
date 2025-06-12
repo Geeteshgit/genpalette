@@ -17,10 +17,10 @@ export async function GET() {
 
 export async function POST(req) {
     try {
-        const session = await auth();
-        if (!session) {
-            return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-        }
+        // const session = await auth();
+        // if (!session) {
+        //     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        // }
         const palettes = await req.json();
         await connectToDB();
         
@@ -40,3 +40,4 @@ export async function POST(req) {
         return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
     }
 }
+

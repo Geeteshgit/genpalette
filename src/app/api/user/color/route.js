@@ -46,7 +46,7 @@ export async function POST(req) {
       return NextResponse.json({ message: "Color already saved" }, { status: 409 });
     }
 
-    user.savedColors.push(color);
+    user.savedColors.unshift(color);
     await user.save();
 
     return NextResponse.json({ color }, { status: 200 });
