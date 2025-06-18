@@ -32,7 +32,7 @@ const TrendingPalettesContainer = () => {
         </div>
       ) : (
         <h2 className="text-center text-2xl sm:text-3xl opacity-50">
-          No Saved Colors Yet!
+          No Palettes Yet!
         </h2>
       )}
     </>

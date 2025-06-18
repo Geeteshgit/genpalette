@@ -1,8 +1,6 @@
 import React from 'react'
-import { redirect } from 'next/navigation';
 import { auth } from '@/lib/auth';
-import Link from 'next/link';
-
+import GenerateAIPalettesContainer from '@/Components/AIPalettes/GenerateAIPalettesContainer';
 
 export const metadata = {
   title: "Generate AI Color Palettes - GenPalette",
@@ -11,13 +9,12 @@ export const metadata = {
 
 const Generate = async () => {
 
-  // const session = await auth();
-  // if(!session) redirect('/sign-in');
+  const session = await auth();
 
   return (
-    <main className='flex-1'>
-      Generate
-      <Link href='/palette'>Palette</Link>
+    <main className='flex-1 px-4 sm:px-12 lg:px-36 py-5 sm:py-10 lg:py-15'>
+      <h1 className='font-anton text-center text-4xl sm:text-5xl lg:text-6xl font-bold'>Generate Color Palettes</h1>
+      <GenerateAIPalettesContainer session={session} />
     </main>
   )
 }
