@@ -9,9 +9,15 @@ import { setPalette } from "@/redux/features/paletteSlice";
 import { redirect } from "next/navigation";
 import { FaRegHeart } from "react-icons/fa6";
 import axios from "axios";
+import { useVisualizer } from "@/hooks/useVisualizer";
+import dynamic from "next/dynamic";
+const Visualizer = dynamic(() =>
+  import("../Visualizer/Visualizer")
+);
 
 const TrendingPalette = ({ palette }) => {
   const [likes, setLikes] = useState(palette.likes);
+  const { visualizer, toggleVisualizer } = useVisualizer();
   const dispatch = useDispatch();
   const openPalette = () => {
     dispatch(setPalette(palette.colors));
@@ -28,6 +34,10 @@ const TrendingPalette = ({ palette }) => {
       console.error(err.message);
     }
   };
+
+  if (visualizer)
+    return <Visualizer toggleVisualizer={toggleVisualizer} />;
+
   return (
     <div className="flex flex-col gap-2">
       <div className="w-full flex rounded-xl border border-gray-300 overflow-hidden">
@@ -44,7 +54,10 @@ const TrendingPalette = ({ palette }) => {
           {likes}
         </span>
         <div className="text-xl flex items-center gap-3">
-          <MdOutlineRemoveRedEye className="hover:scale-110 hover:text-black active:scale-95 transition-all duration-200 cursor-pointer" />
+          <MdOutlineRemoveRedEye
+            onClick={toggleVisualizer}
+            className="hover:scale-110 hover:text-black active:scale-95 transition-all duration-200 cursor-pointer"
+          />
           <IoColorPalette
             onClick={openPalette}
             className="hover:scale-110 hover:text-black active:scale-95 transition-all duration-200 cursor-pointer"

@@ -1,8 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import PromptInput from "./PromptInput";
-import GeneratedPalettesContainer from "./GeneratedPalettesContainer";
 import NavLink from "./NavLink";
+import PromptSuggestions from "./PromptSuggestions";
+import Loader from "../Loader";
+import dynamic from "next/dynamic";
+const GeneratedPalettesContainer = dynamic(
+  () => import("./GeneratedPalettesContainer"),
+  {
+    loading: () => <Loader />,
+  }
+);
 
 const GenerateAIPalettesContainer = ({ session }) => {
   const [palettes, setPalettes] = useState(null);
@@ -22,7 +30,11 @@ const GenerateAIPalettesContainer = ({ session }) => {
         <NavLink link="/palette" text="Generate Custom Palette" />
         <NavLink link="/explore" text="Explore AI Generated Palettes" />
       </div>
-      <GeneratedPalettesContainer palettes={palettes} loading={loading} setPrompt={setPrompt} />
+      {loading && <Loader />}
+      {!palettes && !loading && <PromptSuggestions setPrompt={setPrompt} />}
+      {palettes && !loading && (
+        <GeneratedPalettesContainer palettes={palettes} />
+      )}
     </div>
   );
 };

@@ -3,18 +3,9 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import Information from "@/Components/Dashboard/Information";
 import LogoutButton from "@/Components/LogoutButton";
-import dynamic from "next/dynamic";
-import Loader from "@/Components/Loader";
-const SavedPalettesContainer = dynamic(
-  () => import("@/Components/Dashboard/SavedPalettesContainer"),
-  { loading: () => <Loader /> }
-);
-const SavedColorsContainer = dynamic(
-  () => import("@/Components/Dashboard/SavedColorsContainer"),
-  {
-    loading: () => <Loader />,
-  }
-);
+import SavedColorsContainer from "@/Components/Dashboard/SavedColorsContainer";
+import SavedPalettesContainer from "@/Components/Dashboard/SavedPalettesContainer";
+
 
 export const metadata = {
   title: "Dashboard - GenPalette",

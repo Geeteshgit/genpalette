@@ -1,12 +1,5 @@
-import Loader from "@/Components/Loader";
-import dynamic from "next/dynamic";
+import TrendingPalettesContainer from "@/Components/Explore/TrendingPalettesContainer";
 import React from "react";
-const TrendingPalettesContainer = dynamic(
-  () => import("@/Components/Explore/TrendingPalettesContainer"),
-  {
-    loading: () => <Loader />,
-  }
-);
 
 export const metadata = {
   title: "Explore AI Made Palettes - GenPalette",
