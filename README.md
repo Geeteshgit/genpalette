@@ -81,7 +81,7 @@
    Create a .env.local file in the root directory with the following:
    ```bash
 
-   AUTH_GOOGLE_ID=your_google_oauth_client_id
+    AUTH_GOOGLE_ID=your_google_oauth_client_id
     AUTH_GOOGLE_SECRET=your_google_oauth_client_secret
     AUTH_GITHUB_ID=your_github_oauth_client_id
     AUTH_GITHUB_SECRET=your_github_oauth_client_secret
