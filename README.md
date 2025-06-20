@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎨 GenPalette
 
-## Getting Started
+**GenPalette** is an AI-powered color palette generation and visualization tool, built for developers and designers. It enables users to effortlessly create beautiful and cohesive color themes for UI/UX design using the power of **Gemini AI** or choose preferable colors randomly. Whether you're building a website, app, or brand, GenPalette helps you generate, visualize, save, and manage stunning palettes and individual colors in real-time—making it an essential tool in any modern design or development workflow.
 
-First, run the development server:
+## 🚀 Features
+
+- 🤖 **AI-Generated Palettes**
+  - Generate 12 intelligent color palettes using Gemini AI.
+  - Themes include shade-based, tint-based, and website-optimized palettes.
+
+- 🧪 **Interactive Visualizers**
+  - View your palette applied in multiple mockup styles with dynamic visualizer.
+
+- 💾 **Save & Manage**
+  - Save entire palettes or individual colors to your dashboard.
+  - Like, delete, and copy colors on the fly.
+
+- 👤 **Authentication**
+  - Sign up or log in using GitHub or Google Accounts.
+
+## 🏗️ Tech Stack
+
+- **Frontend**: Next.js (App Router), Tailwind CSS, Redux Toolkit, Framer Motion
+- **Backend**: MongoDB with Mongoose, Next.js API routes
+- **AI Integration**: Google Gemini API
+
+## 📁 Folder Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+├───public
+└───src
+    ├───app
+    │   ├───(auth)
+    │   │   └───sign-in
+    │   ├───api
+    │   │   ├───auth
+    │   │   │   └───[...nextauth]
+    │   │   ├───palettes
+    │   │   │   └───[id]
+    │   │   └───user
+    │   │       ├───color
+    │   │       │   └───[hex]
+    │   │       └───palette
+    │   │           └───[id]
+    │   ├───dashboard
+    │   ├───explore
+    │   ├───generate
+    │   └───palette
+    ├───Components
+    │   ├───AIPalettes
+    │   ├───Dashboard
+    │   ├───Explore
+    │   ├───Homepage
+    │   ├───Palette
+    │   └───Visualizer
+    │       ├───Shapes
+    │       └───Websites
+    ├───data
+    ├───hooks
+    ├───lib
+    │   └───actions
+    ├───models
+    └───redux
+        └───features
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Setup & Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Clone the repo**
+   ```bash
+    git clone https://github.com/Geeteshgit/genpalette.git
+    cd genpalette
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install dependencies**
+   ```bash
+   npm install
 
-## Learn More
+3. **Set up environment variables**
+   Create a .env.local file in the root directory with the following:
+   ```bash
 
-To learn more about Next.js, take a look at the following resources:
+   AUTH_GOOGLE_ID=your_google_oauth_client_id
+    AUTH_GOOGLE_SECRET=your_google_oauth_client_secret
+    AUTH_GITHUB_ID=your_github_oauth_client_id
+    AUTH_GITHUB_SECRET=your_github_oauth_client_secret
+    AUTH_SECRET=your_auth_secret_key
+    MONGO_URI=your_mongodb_connection_string
+    NEXT_PUBLIC_API_URL=http://localhost:3000
+    GEMINI_API_KEY=your_gemini_api_key
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Run the development server**
+   ```bash
+   npm run dev
 
-## Deploy on Vercel
+## Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Created by Geetesh Dalal – feel free to reach out!
