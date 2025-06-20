@@ -1,4 +1,5 @@
 import TrendingPalettesContainer from "@/Components/Explore/TrendingPalettesContainer";
+import { auth } from "@/lib/auth";
 import React from "react";
 
 export const metadata = {
@@ -7,7 +8,8 @@ export const metadata = {
     "Explore hundreds of AI-generated color palettes tailored for designers and developers. Instantly preview and pick the perfect vibe for your project.",
 };  
 
-const Explore = () => {
+const Explore = async () => {
+  const session = await auth();
   return (
     <main className="flex-1 px-4 sm:px-12 lg:px-36 py-5 sm:py-10 lg:py-15">
       <h2 className="font-anton text-center text-3xl sm:text-4xl lg:text-5xl font-bold">
@@ -17,7 +19,7 @@ const Explore = () => {
         Explore unique palettes crafted by AI - fuel your imagination and start
         building!
       </p>
-      <TrendingPalettesContainer />
+      <TrendingPalettesContainer session={session} />
     </main>
   );
 };

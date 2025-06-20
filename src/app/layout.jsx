@@ -8,7 +8,7 @@ export const metadata = {
   description:
     "Generate beautiful, accessible, and developer-friendly color palettes instantly with GenPalette. Get harmonious themes with contrast-optimized colors for UI design, branding, and web development.",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/favicon.png",
   },
 };
 

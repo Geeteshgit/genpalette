@@ -4,7 +4,7 @@ import Loader from "../Loader";
 import TrendingPalette from "./TrendingPalette";
 import { useGetTrendingPalettes } from "@/hooks/useGetTrendingPalettes";
 
-const TrendingPalettesContainer = () => {
+const TrendingPalettesContainer = ({ session }) => {
   const { palettes } = useGetTrendingPalettes();
   if (!palettes) return <Loader />;
 
@@ -13,7 +13,7 @@ const TrendingPalettesContainer = () => {
       {palettes.length > 0 ? (
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8">
           {palettes.map((palette, idx) => {
-            return <TrendingPalette key={idx} palette={palette} />;
+            return <TrendingPalette key={idx} palette={palette} session={session} />;
           })}
         </div>
       ) : (

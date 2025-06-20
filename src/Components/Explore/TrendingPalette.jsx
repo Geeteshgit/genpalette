@@ -9,17 +9,16 @@ import { useVisualizer } from "@/hooks/useVisualizer";
 import dynamic from "next/dynamic";
 import { useOpenPalette } from "@/hooks/useOpenPalette";
 import { useSaveAndLikePalette } from "@/hooks/useSaveAndLikePalette";
-const Visualizer = dynamic(() =>
-  import("../Visualizer/Visualizer")
-);
+import { redirect } from "next/navigation";
+const Visualizer = dynamic(() => import("../Visualizer/Visualizer"));
 
-const TrendingPalette = ({ palette }) => {
+const TrendingPalette = ({ palette, session }) => {
   const [likes, setLikes] = useState(palette.likes);
   const { visualizer, openVisualizer, closeVisualizer } = useVisualizer();
   const { openPalette } = useOpenPalette();
-  const { saveAndLikePalette }  = useSaveAndLikePalette();
+  const { saveAndLikePalette } = useSaveAndLikePalette();
 
-  if (visualizer) return <Visualizer closeVisualizer={closeVisualizer} />
+  if (visualizer) return <Visualizer closeVisualizer={closeVisualizer} />;
 
   return (
     <div className="flex flex-col gap-2">
@@ -47,8 +46,12 @@ const TrendingPalette = ({ palette }) => {
           />
           <MdSaveAlt
             onClick={() => {
-              saveAndLikePalette(palette._id);
-              setLikes(likes + 1);
+              if (!session) {
+                redirect("/sign-in");
+              } else {
+                saveAndLikePalette(palette._id);
+                setLikes(likes + 1);
+              }
             }}
             className="hover:scale-110 hover:text-black active:scale-95 transition-all duration-200 cursor-pointer"
           />
