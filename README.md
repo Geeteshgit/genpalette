@@ -1,6 +1,6 @@
 # 🎨 GenPalette
 
-**GenPalette** is an AI-powered color palette generation and visualization tool, built for developers and designers. It enables users to effortlessly create beautiful and cohesive color themes for UI/UX design using the power of **Gemini AI** or choose preferable colors randomly. Whether you're building a website, app, or brand, GenPalette helps you generate, visualize, save, and manage stunning palettes and individual colors in real-time—making it an essential tool in any modern design or development workflow.
+**GenPalette** is an AI-powered color palette generation and visualization tool, built for developers and designers. It enables users to effortlessly create beautiful and cohesive color themes for UI/UX design using the power of **Gemini AI** or generate colors randomly. Whether you're building a website, app, or brand, GenPalette helps you generate, visualize, save, and manage stunning palettes and individual colors in real-time—making it an essential tool in any modern design or development workflow.
 
 ## 🚀 Features
 
