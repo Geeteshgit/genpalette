@@ -12,7 +12,7 @@ export async function GET() {
     return NextResponse.json({ palettes }, { status: 200 });
   } catch (err) {
     return NextResponse.json(
-      { message: "Internal Server Error" },
+      { message: err.message },
       { status: 500 }
     );
   }
