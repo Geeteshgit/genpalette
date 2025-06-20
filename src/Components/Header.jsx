@@ -35,7 +35,7 @@ const Header = async () => {
           </Link>
           <Link
             href="/sign-in"
-            className="cursor-pointer px-4 py-1.5 border border-transparent bg-blue-500 rounded-sm text-white hover:bg-blue-600 hover:scale-102 transition duration-300"
+            className="hidden sm:flex cursor-pointer px-4 py-1.5 border border-transparent bg-blue-500 rounded-sm text-white hover:bg-blue-600 hover:scale-102 transition duration-300"
           >
             Sign Up
           </Link>

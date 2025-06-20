@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const PromptInput = ({ setPalettes, session, loading, setLoading, prompt, setPrompt }) => {
   const router = useRouter();
@@ -15,8 +16,9 @@ const PromptInput = ({ setPalettes, session, loading, setLoading, prompt, setPro
       setLoading(true);
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/palettes`, { prompt });
       setPalettes(response.data.generatedPalettes);
+      toast.success("Palettes Generated Successfully");
     } catch (err) {
-      console.error(err.message);
+      toast.error("Failed to Generate Palettes. Try Again!")
     } finally {
       setLoading(false);
     }

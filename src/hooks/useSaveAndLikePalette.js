@@ -1,15 +1,17 @@
 "use client";
 
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const useSaveAndLikePalette = () => {
   const saveAndLikePalette = async (id) => {
     try {
-      const response = await axios.put(
+      await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/api/palettes/${id}`
       );
+      toast.success("Palette Saved");
     } catch (err) {
-      console.error(err.message);
+      toast.error("Failed to Save Palette");
     }
   };
   return { saveAndLikePalette };

@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export const useSavedColors = () => {
   const [colors, setColors] = useState(null);
@@ -25,8 +26,9 @@ export const useSavedColors = () => {
         )}`
       );
       setColors((prev) => prev.filter((color) => color !== hex));
+      toast.success("Color Removed");
     } catch (err) {
-      console.error(err.response.message);
+      toast.error("Failed to Remove Color");
     }
   };
 

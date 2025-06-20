@@ -1,4 +1,7 @@
+"use client";
+
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export const useCopyColor = () => {
   const [isCopied, setIsCopied] = useState(false);
@@ -9,8 +12,9 @@ export const useCopyColor = () => {
       setTimeout(() => {
         setIsCopied(false);
       }, 2000);
+      toast.success("Color Copied");
     } catch (err) {
-      console.error(err.message);
+      toast.error("Failed to Copy");
     }
   };
   return { isCopied, copyColor };
