@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import { FaWandMagicSparkles } from "react-icons/fa6";
 
 const Logo = () => {
   return (
