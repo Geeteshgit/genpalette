@@ -1,33 +1,20 @@
 "use client";
-import axios from "axios";
+import { useSaveColor } from "@/hooks/useSaveColor";
 import { redirect } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
 const SaveColorBtn = ({ color, textColor, session }) => {
-  const [isSaved, setIsSaved] = useState(false);
-  const handleSave = async () => {
-    if (!session) {
-      redirect("/sign-in");
-    }
-    try {
-      if (!isSaved) {
-        const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/user/color`,
-          { color }
-        );
-        setIsSaved(true);
-        setTimeout(() => {
-          setIsSaved(false);
-        }, 2000);
-      }
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
+  const { isSaved, saveColor } = useSaveColor();
   return (
     <button
-      onClick={handleSave}
+      onClick={() => {
+        if (!session) {
+          redirect("/sign-in");
+        } else {
+          saveColor(color, session);
+        }
+      }}
       style={{ color: textColor }}
       className="text-xl sm:text-2xl p-2 hover:bg-black/10 rounded-md cursor-pointer transition-all duration-200"
     >

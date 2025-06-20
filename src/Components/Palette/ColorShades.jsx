@@ -3,24 +3,24 @@ import { getColorShades } from "@/lib/getShades";
 import { setPalette } from "@/redux/features/paletteSlice";
 import React from "react";
 import { IoClose } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { motion } from "motion/react";
+import { useGetCurrentPalette } from "@/hooks/useGetCurrentPalette";
 
 const ColorShades = ({ color, setShowShades, idx }) => {
   const dispatch = useDispatch();
   const shades = getColorShades(color);
-  const currentPalette = useSelector((state) => state.palette.palette);
+  const { palette } = useGetCurrentPalette();
   const setShadeToColor = (color) => {
-    const updatedPalette = [...currentPalette];
+    const updatedPalette = [...palette];
     updatedPalette[idx] = color;
-    console.log(updatedPalette);
     dispatch(setPalette(updatedPalette));
     setShowShades(false);
   };
   return (
     <>
       <motion.div
-      initial={{ y: 25, opacity: 0 }}
+        initial={{ y: 25, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3 }}
         style={{

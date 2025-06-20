@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
 import Loader from "../Loader";
 import PaletteNavbar from "./PaletteNavbar";
@@ -11,9 +11,7 @@ const PaletteColorsContainer = dynamic(
 );
 
 const PaletteClient = ({ session }) => {
-  const { isLiked, setIsLiked, handleGenerateNewPalette } =
-    useGeneratePalette();
-  const [showShades, setShowShades] = useState(false);
+  const { isLiked, setIsLiked, handleGenerateNewPalette } = useGeneratePalette();
 
   return (
     <main className="flex-1">
@@ -24,11 +22,7 @@ const PaletteClient = ({ session }) => {
         setIsLiked={setIsLiked}
         session={session}
       />
-      <PaletteColorsContainer
-        showShades={showShades}
-        setShowShades={setShowShades}
-        session={session}
-      />
+      <PaletteColorsContainer session={session} />
     </main>
   );
 };

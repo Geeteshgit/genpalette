@@ -1,29 +1,20 @@
 "use client";
 import React from "react";
 import { getBestContrastColor } from "@/lib/getTextColor";
-import { useDispatch } from "react-redux";
-import { redirect } from "next/navigation";
-import { setPalette } from "@/redux/features/paletteSlice";
-import axios from "axios";
 import SinglePaletteColor from "../SinglePaletteColor";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { useVisualizer } from "@/hooks/useVisualizer";
+import dynamic from "next/dynamic";
+import { useOpenPalette } from "@/hooks/useOpenPalette";
+const Visualizer = dynamic(() => import("../Visualizer/Visualizer"));
 
-const SavedColorPalette = ({ palette, palettes, setPalettes }) => {
-  const dispatch = useDispatch();
-  const openPalette = () => {
-    dispatch(setPalette(palette.colors));
-    redirect("/palette");
-  };
-  const removePalette = async (id) => {
-    try {
-      await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/user/palette/${id}`
-      );
-      setPalettes(palettes.filter((palette) => palette._id !== id));
-    } catch (err) {
-      console.error(err.response.message);
-    }
-  };
+const SavedColorPalette = ({ palette, removePalette }) => {
+  
+  const { visualizer, openVisualizer, closeVisualizer } = useVisualizer();
+  const { openPalette } = useOpenPalette();
+
+  if (visualizer) return <Visualizer closeVisualizer={closeVisualizer} />;
+
   return (
     <div className="border border-gray-400 rounded-xl overflow-hidden">
       <div className="w-full flex">
@@ -43,12 +34,15 @@ const SavedColorPalette = ({ palette, palettes, setPalettes }) => {
         </button>
         <div className="flex items-center gap-2">
           <button
-            onClick={openPalette}
+            onClick={() => openPalette(palette.colors)}
             className="w-full cursor-pointer px-4 py-1 border border-gray-300 hover:border-blue-500 hover:scale-102 rounded-md text-blue-500 transition duration-300"
           >
             Palette
           </button>
-          <button className="w-full flex items-center justify-center gap-1 cursor-pointer px-3 py-1 border border-transparent bg-blue-500 rounded-md text-white hover:bg-blue-600 hover:scale-102 transition duration-300">
+          <button
+            onClick={() => openVisualizer(palette.colors)}
+            className="w-full flex items-center justify-center gap-1 cursor-pointer px-3 py-1 border border-transparent bg-blue-500 rounded-md text-white hover:bg-blue-600 hover:scale-102 transition duration-300"
+          >
             Visualize <MdOutlineRemoveRedEye />
           </button>
         </div>

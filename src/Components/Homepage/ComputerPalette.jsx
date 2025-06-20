@@ -1,4 +1,3 @@
-"use client";
 import { explorePaletteColors } from "@/data/paletteSet";
 import Link from "next/link";
 import React from "react";

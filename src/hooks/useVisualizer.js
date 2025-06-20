@@ -1,11 +1,21 @@
 "use client";
 
+import { setPalette } from "@/redux/features/paletteSlice";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 export const useVisualizer = () => {
   const [visualizer, setVisualizer] = useState(false);
-  const toggleVisualizer = () => {
-    setVisualizer(!visualizer);
+  const dispatch = useDispatch();
+
+  const openVisualizer = (colors) => {
+    dispatch(setPalette(colors));
+    setVisualizer(true);
   };
-  return { visualizer, toggleVisualizer };
+
+  const closeVisualizer = () => {
+    setVisualizer(false);
+  }
+
+  return { visualizer, openVisualizer, closeVisualizer };
 };

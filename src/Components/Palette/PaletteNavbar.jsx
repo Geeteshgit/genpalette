@@ -17,9 +17,18 @@ const PaletteNavbar = ({ isLiked, setIsLiked, onGenerateClick, session }) => {
         </div>
         <div className="flex items-center gap-2 text-xl px-3 border-x border-gray-400">
           <VisualizePaletteBtn />
-          <SavePaletteBtn isLiked={isLiked} setIsLiked={setIsLiked} session={session} />
+          <SavePaletteBtn
+            isLiked={isLiked}
+            setIsLiked={setIsLiked}
+            session={session}
+          />
         </div>
-          <Link href='/generate' className="text-xl p-2 mx-3 hover:bg-neutral-200 rounded-md active:scale-95"><FaWandMagicSparkles /></Link>
+        <Link
+          href="/generate"
+          className="text-xl p-2 mx-3 hover:bg-neutral-200 rounded-md active:scale-95"
+        >
+          <FaWandMagicSparkles />
+        </Link>
       </div>
     </div>
   );

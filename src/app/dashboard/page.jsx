@@ -6,7 +6,6 @@ import LogoutButton from "@/Components/LogoutButton";
 import SavedColorsContainer from "@/Components/Dashboard/SavedColorsContainer";
 import SavedPalettesContainer from "@/Components/Dashboard/SavedPalettesContainer";
 
-
 export const metadata = {
   title: "Dashboard - GenPalette",
   description:

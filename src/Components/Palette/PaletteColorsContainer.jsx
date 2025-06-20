@@ -1,11 +1,11 @@
 import { getBestContrastColor } from "@/lib/getTextColor";
 import React from "react";
 import Loader from "../Loader";
-import { useGetPalette } from "@/hooks/useGetPalette";
+import { useGetCurrentPalette } from "@/hooks/useGetCurrentPalette";
 import ColorTools from "./ColorTools";
 
 const PaletteColorsContainer = ({ session }) => {
-  const { palette } = useGetPalette();
+  const { palette } = useGetCurrentPalette();
 
   return (
     <div className="flex flex-col h-[80vh] lg:flex-row flex-1">
@@ -27,7 +27,7 @@ const PaletteColorsContainer = ({ session }) => {
                 {color.slice(1).toUpperCase()}
               </span>
               <div className="lg:opacity-0 group-hover:opacity-100">
-                <ColorTools color={color} session={session} idx={idx} />
+                <ColorTools color={color} idx={idx} session={session} />
               </div>
             </div>
           );

@@ -4,39 +4,22 @@ import React, { useState } from "react";
 import SinglePaletteColor from "../SinglePaletteColor";
 import { MdOutlineRemoveRedEye, MdSaveAlt } from "react-icons/md";
 import { IoColorPalette } from "react-icons/io5";
-import { useDispatch } from "react-redux";
-import { setPalette } from "@/redux/features/paletteSlice";
-import { redirect } from "next/navigation";
 import { FaRegHeart } from "react-icons/fa6";
-import axios from "axios";
 import { useVisualizer } from "@/hooks/useVisualizer";
 import dynamic from "next/dynamic";
+import { useOpenPalette } from "@/hooks/useOpenPalette";
+import { useSaveAndLikePalette } from "@/hooks/useSaveAndLikePalette";
 const Visualizer = dynamic(() =>
   import("../Visualizer/Visualizer")
 );
 
 const TrendingPalette = ({ palette }) => {
   const [likes, setLikes] = useState(palette.likes);
-  const { visualizer, toggleVisualizer } = useVisualizer();
-  const dispatch = useDispatch();
-  const openPalette = () => {
-    dispatch(setPalette(palette.colors));
-    redirect("/palette");
-  };
+  const { visualizer, openVisualizer, closeVisualizer } = useVisualizer();
+  const { openPalette } = useOpenPalette();
+  const { saveAndLikePalette }  = useSaveAndLikePalette();
 
-  const saveAndLikePalette = async (id) => {
-    try {
-      const response = await axios.put(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/palettes/${id}`
-      );
-      setLikes(likes + 1);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  if (visualizer)
-    return <Visualizer toggleVisualizer={toggleVisualizer} />;
+  if (visualizer) return <Visualizer closeVisualizer={closeVisualizer} />
 
   return (
     <div className="flex flex-col gap-2">
@@ -55,15 +38,18 @@ const TrendingPalette = ({ palette }) => {
         </span>
         <div className="text-xl flex items-center gap-3">
           <MdOutlineRemoveRedEye
-            onClick={toggleVisualizer}
+            onClick={() => openVisualizer(palette.colors)}
             className="hover:scale-110 hover:text-black active:scale-95 transition-all duration-200 cursor-pointer"
           />
           <IoColorPalette
-            onClick={openPalette}
+            onClick={() => openPalette(palette.colors)}
             className="hover:scale-110 hover:text-black active:scale-95 transition-all duration-200 cursor-pointer"
           />
           <MdSaveAlt
-            onClick={() => saveAndLikePalette(palette._id)}
+            onClick={() => {
+              saveAndLikePalette(palette._id);
+              setLikes(likes + 1);
+            }}
             className="hover:scale-110 hover:text-black active:scale-95 transition-all duration-200 cursor-pointer"
           />
         </div>

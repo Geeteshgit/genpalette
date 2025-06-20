@@ -5,7 +5,7 @@ import { setPalette } from "@/redux/features/paletteSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export const useGetPalette = () => {
+export const useGetCurrentPalette = () => {
   const dispatch = useDispatch();
   const palette = useSelector((state) => state.palette.palette);
 

@@ -2,7 +2,7 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
 
-const VisualizerHeader = ({ toggleVisualizer }) => {
+const VisualizerHeader = ({ closeVisualizer }) => {
   return (
     <div
       style={{
@@ -15,7 +15,7 @@ const VisualizerHeader = ({ toggleVisualizer }) => {
         Palette Visualizer
       </h2>
       <span
-        onClick={toggleVisualizer}
+        onClick={closeVisualizer}
         className="text-xl sm:text-2xl p-1 hover:bg-red-400/75 active:scale-95 rounded-md cursor-pointer transition-all duration-200"
       >
         <IoClose />

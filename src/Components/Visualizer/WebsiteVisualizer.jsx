@@ -1,8 +1,13 @@
 import React from 'react'
+import WebsiteVisualizerOne from './Websites/WebsiteVisualizerOne'
+import WebsiteVisualizerTwo from './Websites/WebsiteVisualizerTwo'
 
 const WebsiteVisualizer = () => {
   return (
-    <div>WebsiteVisualizer</div>
+    <div className='grid gap-5'>
+      <WebsiteVisualizerOne />
+      <WebsiteVisualizerTwo />
+    </div>
   )
 }
 

@@ -1,14 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setPalette } from "@/redux/features/paletteSlice";
 import { motion } from "motion/react";
+import { useGetCurrentPalette } from "@/hooks/useGetCurrentPalette";
 
 const ColorPickerModal = ({ currentColor, idx, setShowPicker }) => {
   const dispatch = useDispatch();
   const [newColor, setNewColor] = useState(currentColor);
-  const palette = useSelector((state) => state.palette.palette);
+  const { palette } = useGetCurrentPalette();
 
   const handleChange = (e) => {
     setNewColor(e.target.value.toUpperCase());

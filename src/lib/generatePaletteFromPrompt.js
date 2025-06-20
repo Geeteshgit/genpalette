@@ -29,7 +29,13 @@ export async function generateAIPalettes(promptText) {
       contents: prompt,
     });
     const text = response.text;
-    const palettes = JSON.parse(text);
+
+    const cleaned = text
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
+
+    const palettes = JSON.parse(cleaned);
     return palettes;
   } catch (err) {
     console.error(err.message);

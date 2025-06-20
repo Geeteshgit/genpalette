@@ -5,13 +5,7 @@ import SaveColorBtn from "./SaveColorBtn";
 import ShowShadesBtn from "./ShowShadesBtn";
 import ColorPickerBtn from "./ColorPickerBtn";
 
-const ColorTools = ({
-  color,
-  showShades,
-  setShowShades,
-  session,
-  idx = { idx },
-}) => {
+const ColorTools = ({ color, idx, session }) => {
   const textColor = getBestContrastColor(color);
 
   return (
@@ -19,13 +13,7 @@ const ColorTools = ({
       <ColorPickerBtn color={color} textColor={textColor} idx={idx} />
       <CopyColorBtn color={color} textColor={textColor} />
       <SaveColorBtn color={color} textColor={textColor} session={session} />
-      <ShowShadesBtn
-        color={color}
-        showShades={showShades}
-        setShowShades={setShowShades}
-        textColor={textColor}
-        idx={idx}
-      />
+      <ShowShadesBtn color={color} textColor={textColor} idx={idx} />
     </div>
   );
 };

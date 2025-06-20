@@ -1,40 +1,29 @@
 "use client";
-import { useGetPalette } from "@/hooks/useGetPalette";
-import axios from "axios";
+import { useGetCurrentPalette } from "@/hooks/useGetCurrentPalette";
+import { useSavePalette } from "@/hooks/useSavePalette";
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
 const SavePaletteBtn = ({ isLiked, setIsLiked, session }) => {
   const [paletteId, setPaletteId] = useState(null);
-  const { palette } = useGetPalette();
-
-  const savePalette = async () => {
-    if (!session) {
-      redirect("/sign-in");
-    }
-    try {
-      if (!isLiked) {
-        const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/user/palette`,
-          palette
-        );
-        setIsLiked(true);
-        setPaletteId(response.data.savedPalette._id);
-      } else {
-        const response = await axios.delete(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/user/palette/${paletteId}`
-        );
-        setIsLiked(false);
-      }
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
+  const { palette } = useGetCurrentPalette();
+  const { savePalette, removePalette } = useSavePalette();
 
   return (
     <button
-      onClick={savePalette}
+      onClick={() => {
+        if(!session) redirect('/sign-in');
+        else {
+          if(!isLiked) {
+            savePalette(palette, setPaletteId, setIsLiked);
+          }
+          else {
+            removePalette(paletteId, setIsLiked);
+          }
+        }
+
+      }}
       className="p-2 hover:bg-neutral-200 rounded-md cursor-pointer group"
     >
       {isLiked ? (
