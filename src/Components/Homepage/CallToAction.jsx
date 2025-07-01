@@ -22,7 +22,7 @@ const CallToAction = () => {
           <IoIosColorPalette />
         </Link>
       </div>
-      <p className="w-full text-center sm:w-1/2 text-xl opacity-75">
+      <p className="w-full text-center sm:w-1/2 sm:text-lg lg:text-xl opacity-75">
         Let AI intelligently generate beautiful and cohesive color palettes for
         your designs, and instantly visualize how they look together in
         real-time. Completely free to use!
